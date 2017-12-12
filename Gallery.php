@@ -2,6 +2,10 @@
 
 namespace alex290\gallery;
 
+use alex290\gallery\GalleryAssetsBundle;
+
+
+
 /**
  * This is just an example.
  */
@@ -10,9 +14,9 @@ class Gallery extends \yii\base\Widget {
     public $modelsImages;
 
     public function run() {
-
+        GalleryAssetsBundle::register($this->view);
         $tree = '';
-        foreach ($this->modelsImages as $image) {
+        foreach ($this->modelsImages->getImages() as $image) {
             $tree .= $this->catToTemplate($image);
         }
 
