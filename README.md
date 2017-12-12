@@ -1,31 +1,46 @@
-Admin Gallery
+Управление галереей в админки
 =============
-Admin Gallery
 
-Installation
+Это расширение работает с расширением **[yii2-images](https://github.com/CostaRico/yii2-images)**
+
+Установка
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+Предпочтительный способ установки этого расширения через [composer](http://getcomposer.org/download/).
 
-Either run
+Установить командой
 
-```
-php composer.phar require --prefer-dist alex290/yii2-gallery "*"
-```
+	php composer.phar require --prefer-dist alex290/yii2-gallery "*"
 
-or add
+или добавить
 
-```
-"alex290/yii2-gallery": "*"
-```
-
-to the require section of your `composer.json` file.
+	"alex290/yii2-gallery": "*"
 
 
-Usage
+в секцию require вашего `composer.json` файла.
+
+
+Использование
 -----
 
-Once the extension is installed, simply use it in your code by  :
+	use alex290\gallery\Gallery;
 
-```php
-<?= \alex290\gallery\Gallery::widget(); ?>```
+запустить виджет перед полем загрузкой файла
+
+
+	<?php if (!$model->isNewRecord): ?>
+
+        <div class="row">
+            <?= Gallery::widget(['modelsImages' => $model]) ?>  
+        </div>
+
+    <?php endif; ?>
+
+и в конфиге `web.php` прописать
+
+	'modules' => [
+        'yii2gallery' => [
+            'class' => 'alex290\gallery\Module',
+            'layout' => false,
+        ],  
+    ],
