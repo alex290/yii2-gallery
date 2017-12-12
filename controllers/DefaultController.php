@@ -12,8 +12,14 @@ class DefaultController extends Controller
         if (\Yii::$app->request->isAjax) {
 
             $dataPost = \Yii::$app->request->get();
-            debug($dataPost);
-            $this->findModel($dataPost['id'], $dataPost['name'])->delete();
+            $idPist = $this->findModel($dataPost['id'], \yii\helpers\StringHelper::basename($dataPost['name']))->itemId;
+            $model = $dataPost['name']::find()->where(['id' => $idPist])->one();
+            foreach ($model->getImages() as $imag) {
+                if ($imag->getPrimaryKey() == $dataPost['id']) {
+                    $model->removeImage($imag);
+                }
+            }
+            debug($model);
         }
         return TRUE;
     }

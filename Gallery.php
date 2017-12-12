@@ -16,7 +16,7 @@ class Gallery extends \yii\base\Widget {
     public function run() {
         GalleryAssetsBundle::register($this->view);
         $tree = '';
-        $modelsName = \yii\helpers\StringHelper::basename(get_class($this->modelsImages));
+        $modelsName = get_class($this->modelsImages);
         foreach ($this->modelsImages->getImages() as $image) {
             $tree .= $this->catToTemplate($image, $modelsName);
         }

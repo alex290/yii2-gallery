@@ -6,7 +6,7 @@
 			$.ajax({
 				url: '/yii2gallery',
 				type: 'GET',
-				data: {id: $(this).attr('id'), name: $(this).attr('data-name')},
+				data: {id: $(this).attr('id'), name: $(this).attr('data-name') },
 			})
 			.done(function(res) {
 				console.log(res);
