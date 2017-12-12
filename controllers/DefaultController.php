@@ -19,7 +19,6 @@ class DefaultController extends Controller
                     $model->removeImage($imag);
                 }
             }
-            debug($model);
         }
         return TRUE;
     }
