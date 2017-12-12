@@ -9,7 +9,13 @@ class DefaultController extends Controller
 {
     public function actionIndex()
     {
-        return 'fjhdgfdfghjg';
+        if (\Yii::$app->request->isAjax) {
+
+            $dataPost = \Yii::$app->request->get();
+            debug($dataPost);
+            $this->findModel($dataPost['id'], $dataPost['name'])->delete();
+        }
+        return TRUE;
     }
     
     protected function findModel($id, $modelName)
