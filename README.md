@@ -36,6 +36,12 @@
 
     <?php endif; ?>
 
+Если в одну колонку до добавляем параметр 'typeGalley' => 'pic'
+
+Получается
+
+        <?= Gallery::widget(['modelsImages' => $model, 'typeGalley' => 'pic']) ?> 
+
 и в конфиге `web.php` прописать
 
 	'modules' => [
